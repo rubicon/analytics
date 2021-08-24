@@ -3,9 +3,9 @@ defmodule Plausible.Stats.Query do
             interval: nil,
             period: nil,
             filters: %{},
-            sample_threshold: 10_000_000
+            sample: 10_000_000
 
-  @default_sample_threshold 10_000_000
+  @default_sample 10_000_000
 
   def shift_back(%__MODULE__{period: "month"} = query, site) do
     # Querying current month to date
@@ -45,7 +45,7 @@ defmodule Plausible.Stats.Query do
       interval: "minute",
       date_range: Date.range(date, date),
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -57,7 +57,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(date, date),
       interval: "hour",
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -70,7 +70,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(start_date, end_date),
       interval: "date",
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -83,7 +83,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(start_date, end_date),
       interval: "date",
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -98,7 +98,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(start_date, end_date),
       interval: "date",
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -116,7 +116,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(start_date, end_date),
       interval: Map.get(params, "interval", "month"),
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -134,7 +134,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(start_date, end_date),
       interval: Map.get(params, "interval", "month"),
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
@@ -158,7 +158,7 @@ defmodule Plausible.Stats.Query do
       date_range: Date.range(from_date, to_date),
       interval: Map.get(params, "interval", "date"),
       filters: parse_filters(params),
-      sample_threshold: Map.get(params, "sample_threshold", @default_sample_threshold)
+      sample: Map.get(params, "sample", @default_sample)
     }
   end
 
